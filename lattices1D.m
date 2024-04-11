@@ -31,7 +31,7 @@ for i = 1:m-1
 
 	SX1Dnp(i+1, i) = j/2;
 	SX1Dnp(i, i+1) = -j/2;
-endfor
+end
 
 % For periodic systems
 	CX1Dp(1 , m) = 1/2;

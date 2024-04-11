@@ -43,14 +43,14 @@ for k = 1:n
 
 		SX2Dnp((k-1)*m + i + 1, (k-1)*m + i) = j/2;
 		SX2Dnp((k-1)*m + i, (k-1)*m + i + 1) = -j/2;
-	endfor
+	end
 % For periodic systems
 	CX2Dp((k-1)*m + 1, (k-1)*m + m) = 1/2;
 	CX2Dp((k-1)*m + m, (k-1)*m + 1) = 1/2;
 
 	SX2Dp((k-1)*m + 1, (k-1)*m + m) = j/2;
 	SX2Dp((k-1)*m + m, (k-1)*m + 1) = -j/2;
-endfor
+end
 
 %2Dy
 for i = 1:m
@@ -66,14 +66,14 @@ for i = 1:m
 
 		SY2Dnp(k*m + i, (k-1)*m + i) = j/2;
 		SY2Dnp((k-1)*m + i, k*m + i) = -j/2;
-	endfor
+	end
 % For periodic systems
 	CY2Dp(i, (n-1)*m + i) = 1/2;
 	CY2Dp((n-1)*m + i, i) = 1/2;
 
 	SY2Dp(i, (n-1)*m + i) = j/2;
 	SY2Dp((n-1)*m + i, i) = -j/2;
-endfor
+end
 
 % Constant matrix
 M2D = eye(m*n);
@@ -89,15 +89,15 @@ for a = 1:(m-1)
 	for b = 2:n
 		SXnpYnp2D(a + (b-1) * m, a + 1 + (b - 2) * m) = 1/4;
 		SXnpYnp2D(a + 1 + (b - 2) * m, a + (b-1) * m) = 1/4;
-	endfor
-endfor
+	end
+end
 
 for a = 1:(m-1)
 	for b = 1:(n-1)
 		SXnpYnp2D(a + (b-1) * m, a + 1 + b * m) = -1/4;
 		SXnpYnp2D(a + 1 + b * m, a + (b-1) * m) = -1/4;
-	endfor
-endfor
+	end
+end
 
 %Periodic only in X
 for b = 2:(n-1)
@@ -106,7 +106,7 @@ for b = 2:(n-1)
 
 	SXpYnp2D(b*m, b*m + 1) = -1/4;
 	SXpYnp2D(b*m + 1, b*m) = -1/4;
-endfor
+end
 
 SXpYnp2D(n * m , (n-2) * m + 1) = 1/4;
 SXpYnp2D((n-2) * m + 1, n * m) = 1/4;
@@ -121,7 +121,7 @@ for a = 1:(m-1)
 
 	SXnpYp2D(a, a + 1 + (n - 1) * m) = 1/4;
 	SXnpYp2D(a + 1 + (n - 1) * m, a) = 1/4;
-endfor
+end
 
 %Both periodic
 %Corners
@@ -145,14 +145,14 @@ for b = 1:n
 	for a = 1:(m-2)
 		S2X2Dnp(a + (b-1)*m, a + (b-1)*m + 2) = -j/2;
 		S2X2Dnp(a + (b-1)*m + 2, a + (b-1)*m) = j/2;
-	endfor
+	end
 	%periodic
 	S2X2Dp (b*m - 1, 1 + (b-1)*m) = -j/2;
 	S2X2Dp (1 + (b-1)*m, b*m - 1) = j/2;
 
 	S2X2Dp(b*m, 2 + (b-1)*m) = -j/2;
 	S2X2Dp(2 + (b-1)*m, b*m) = j/2;
-endfor
+end
 
 %Finally add up
 S2X2Dp += S2X2Dnp;
@@ -169,15 +169,15 @@ for a = 1:(m-1)
 	for b = 2:n
 		SXnpCYnp2D(a + (b-1) * m, a + 1 + (b - 2) * m) = -j/4;
 		SXnpCYnp2D(a + 1 + (b - 2) * m, a + (b-1) * m) = j/4;
-	endfor
-endfor
+	end
+end
 
 for a = 1:(m-1)
 	for b = 1:(n-1)
 		SXnpCYnp2D(a + (b-1) * m, a + 1 + b * m) = -j/4;
 		SXnpCYnp2D(a + 1 + b * m, a + (b-1) * m) = j/4;
-	endfor
-endfor
+	end
+end
 
 %Periodic only in X
 for b = 2:(n-1)
@@ -186,7 +186,7 @@ for b = 2:(n-1)
 
 	SXpCYnp2D(b*m, b*m + 1) = -j/4;
 	SXpCYnp2D(b*m + 1, b*m) = j/4;
-endfor
+end
 
 SXpCYnp2D(n * m , (n-2) * m + 1) = -j/4;
 SXpCYnp2D((n-2) * m + 1, n * m) = j/4;
@@ -201,7 +201,7 @@ for a = 1:(m-1)
 
 	SXnpCYp2D(a, a + 1 + (n - 1) * m) = -j/4;
 	SXnpCYp2D(a + 1 + (n - 1) * m, a) = j/4;
-endfor
+end
 
 %Both periodic
 %Corners
@@ -227,15 +227,15 @@ for a = 1:(m-1)
 	for b = 2:n
 		CXnpSYnp2D(a + (b-1) * m, a + 1 + (b - 2) * m) = j/4;
 		CXnpSYnp2D(a + 1 + (b - 2) * m, a + (b-1) * m) = -j/4;
-	endfor
-endfor
+	end
+end
 
 for a = 1:(m-1)
 	for b = 1:(n-1)
 		CXnpSYnp2D(a + (b-1) * m, a + 1 + b * m) = -j/4;
 		CXnpSYnp2D(a + 1 + b * m, a + (b-1) * m) = j/4;
-	endfor
-endfor
+	end
+end
 
 %Periodic only in X
 for b = 2:(n-1)
@@ -244,7 +244,7 @@ for b = 2:(n-1)
 
 	CXpSYnp2D(b*m, b*m + 1) = -j/4;
 	CXpSYnp2D(b*m + 1, b*m) = j/4;
-endfor
+end
 
 CXpSYnp2D(n * m , (n-2) * m + 1) = j/4;
 CXpSYnp2D((n-2) * m + 1, n * m) = -j/4;
@@ -259,7 +259,7 @@ for a = 1:(m-1)
 
 	CXnpSYp2D(a, a + 1 + (n - 1) * m) = j/4;
 	CXnpSYp2D(a + 1 + (n - 1) * m, a) = -j/4;
-endfor
+end
 
 %Both periodic
 %Corners
@@ -285,15 +285,15 @@ for a = 1:(m-1)
 	for b = 2:n
 		CXnpCYnp2D(a + (b-1) * m, a + 1 + (b - 2) * m) = 1/4;
 		CXnpCYnp2D(a + 1 + (b - 2) * m, a + (b-1) * m) = 1/4;
-	endfor
-endfor
+	end
+end
 
 for a = 1:(m-1)
 	for b = 1:(n-1)
 		CXnpCYnp2D(a + (b-1) * m, a + 1 + b * m) = 1/4;
 		CXnpCYnp2D(a + 1 + b * m, a + (b-1) * m) = 1/4;
-	endfor
-endfor
+	end
+end
 
 %Periodic only in X
 for b = 2:(n-1)
@@ -302,7 +302,7 @@ for b = 2:(n-1)
 
 	CXpCYnp2D(b*m, b*m + 1) = 1/4;
 	CXpCYnp2D(b*m + 1, b*m) = 1/4;
-endfor
+end
 
 CXpCYnp2D(n * m , (n-2) * m + 1) = 1/4;
 CXpCYnp2D((n-2) * m + 1, n * m) = 1/4;
@@ -317,7 +317,7 @@ for a = 1:(m-1)
 
 	CXnpCYp2D(a, a + 1 + (n - 1) * m) = 1/4;
 	CXnpCYp2D(a + 1 + (n - 1) * m, a) = 1/4;
-endfor
+end
 
 %Both periodic
 %Corners
@@ -340,12 +340,12 @@ for a = 1:m
 	for b = 1:(n-2)
 		S2Y2Dnp(a + (b - 1)*m, a + (b + 1)*m) = -j/2;
 		S2Y2Dnp(a + (b + 1)*m, a + (b - 1)*m) = j/2;
-	endfor
+	end
 	S2Y2Dp(a, a + (n-2)*m) = j/2;
 	S2Y2Dp(a + (n-2)*m, a) = -j/2;
 
 	S2Y2Dp(a + m, a + (n-1)*m) = j/2;
 	S2Y2Dp(a + (n-1)*m, a + m) = -j/2;
-endfor
+end
 %Finally add up
 S2Y2Dp += S2X2Dnp;

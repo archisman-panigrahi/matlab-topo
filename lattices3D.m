@@ -41,15 +41,15 @@ for l= 1:p
 
 			SX3Dnp((l-1)*m*n + (k-1)*m + i + 1, (l-1)*m*n + (k-1)*m + i) = j/2;
 			SX3Dnp((l-1)*m*n + (k-1)*m + i, (l-1)*m*n + (k-1)*m + i + 1) = -j/2;
-		endfor
+		end
 		%For periodic systems
 		CX3Dp((l-1)*m*n + (k-1)*m + 1, (l-1)*m*n + (k-1)*m + m) = 1/2;
 		CX3Dp((l-1)*m*n + (k-1)*m + m, (l-1)*m*n + (k-1)*m + 1) = 1/2;
 
 		SX3Dp((l-1)*m*n + (k-1)*m + 1, (l-1)*m*n + (k-1)*m + m) = j/2;
 		SX3Dp((l-1)*m*n + (k-1)*m + m, (l-1)*m*n + (k-1)*m + 1) = -j/2;
-	endfor
-endfor
+	end
+end
 
 %3Dy
 for i= 1:m
@@ -66,15 +66,15 @@ for i= 1:m
 
 			SY3Dnp((l-1)*m*n + k*m + i, (l-1)*m*n + (k-1)*m +i) = j/2;
 			SY3Dnp((l-1)*m*n + (k-1)*m + i, (l-1)*m*n + k*m + i) = -j/2;
-		endfor
+		end
 		%For periodic systems
 		CY3Dp((l-1)*m*n + i, (l-1)*m*n + (n-1)*m +i) = 1/2;
 		CY3Dp((l-1)*m*n + (n-1)*m + i, (l-1)*m*n + i) = 1/2;
 
 		SY3Dp((l-1)*m*n + i, (l-1)*m*n + (n-1)*m +i) = j/2;
 		SY3Dp((l-1)*m*n + (n-1)*m + i, (l-1)*m*n + i) = -j/2;
-	endfor
-endfor
+	end
+end
 
 %3Dz
 for i = 1:m
@@ -91,15 +91,15 @@ for i = 1:m
 
 			SZ3Dnp(l*m*n + (k-1)*m + i, (l-1)*m*n + (k-1)*m +i) = j/2;
 			SZ3Dnp((l-1)*m*n + (k-1)*m + i, l*m*n + (k-1)*m +i) = -j/2;
-		endfor
+		end
 		%For periodic systems
 		CZ3Dp((k-1)*m + i, (p-1)*m*n + (k-1)*m +i) = 1/2;
 		CZ3Dp((p-1)*m*n + (k-1)*m + i, (k-1)*m +i) = 1/2;
 
 		SZ3Dp((k-1)*m + i, (p-1)*m*n + (k-1)*m +i) = j/2;
 		SZ3Dp((p-1)*m*n + (k-1)*m + i, (k-1)*m +i) = -j/2;
-	endfor
-endfor
+	end
+end
 
 % Constant matrix
 M3D = eye(m*n*p);
